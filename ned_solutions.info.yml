@@ -1,0 +1,15 @@
+name: "Ned Solutions"
+type: theme
+description: "A custom theme for Ned Solutions, based on an HTML template."
+package: Custom
+core_version_requirement: ^11
+base theme: false
+libraries:
+  - ned_solutions/files
+regions:
+  header: "Header"
+  content: "Content"
+  sidebar_first: "Sidebar First"
+  hero_section: "Hero section"
+  sidebar_second: "Sidebar Second"
+  footer: "Footer"
