@@ -7,12 +7,12 @@ files:
       https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css: { type: external }
       
       # Local CSS
+      css/style.css: {}
       css/image-hover.css: {}
       css/cobox.css: {}
       css/tab-style.css: {}
       css/pignose.layerslider.css: {}
       css/bgfader.css: {}
-      css/style.css: {}
   js:
     # # Local JS
     js/modernizr.custom.js: {}

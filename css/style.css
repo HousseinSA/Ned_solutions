@@ -104,11 +104,14 @@ ul.top-links li select.lang {
 }
 /*-- /top-bar --*/
 /*-- navbar --*/
-.nav-links {
-  position: sticky;
+.navbar  {
+  position: sticky; 
   top: 0;
   z-index: 1000; /* Ensures the navbar stays above other content */
   background-color: #fff; /* Prevent transparency issues */
+}
+.nav>li>a:focus, .nav>li>a:hover {
+  background: none !important;
 }
 
 .navbar {
@@ -135,9 +138,6 @@ ul.top-links li select.lang {
   padding: 1rem 0;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 
 .nav-links .navbar-inverse {
@@ -183,7 +183,6 @@ ul.top-links li select.lang {
   color: #f9b448;
   background-color: #ffffff;
 }
-
 /*-- Link Effect: bottom border enlarge --*/
 .link-effect a {
   padding: 0 0 10px;
@@ -1284,8 +1283,6 @@ button.trigger {
     font-size: 35px;
   }
 
-  
-
   .video iframe {
     width: 730px;
     height: 406px;
@@ -1328,8 +1325,86 @@ button.trigger {
     margin-left: -17%;
   }
 }
+.menu-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: #f9b448;
+  display: none; /* Hidden by default */
+}
+
+/* Default styles for the menu */
+.navigation {
+  display: block; /* Hide menu by default */
+}
+
+/* Styles for the menu when the hamburger menu is clicked */
+.navigation.active {
+  display: block; /* Show menu when active */
+}
+
+/* Menu icon styles */
+.menu-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: #f9b448;
+  display: none; /* Hidden by default */
+}
+
 
 @media (max-width: 900px) {
+  /* main navigation */
+  .navigation {
+    display: none; /* Hide menu by default on mobile */
+  }
+
+  /* Show menu icon on mobile view */
+  .menu-icon {
+    display: block;
+    margin-left: auto;
+  }
+  .navbar-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 2.5rem;
+  padding-left: 2.5rem;
+  }
+  .navbar{
+    box-shadow: none;
+  }
+
+  /* Show the menu when 'active' class is applied */
+  .navigation.active {
+    display: block; /* Show menu when active on mobile */
+  }
+
+  /* Other styles for the navbar on mobile */
+  
+  .navbar-nav {
+    position: absolute;
+    width: auto; /* Allow the width to adjust based on the content */
+    top: 100%; /* Adjust as needed */
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    text-align: center;
+    z-index: 50;
+    margin: 0;
+  }
+
+  .navbar-nav li {
+    margin: 0 auto; /* Center align each list item */
+    padding: 1rem 0;
+    width: auto; /* Ensure each list item takes the width of the text */
+  }
+
+  .navbar-nav > li > a {
+    display: inline-block; /* Make the anchor inline-block to only take text width */
+    padding: 0.5rem 1rem;
+  }
+
   span.shortline1-1,
   span.shortline1-2,
   span.shortline1-3 {
@@ -1357,17 +1432,6 @@ button.trigger {
 }
 
 @media (max-width: 800px) {
-
-  .nav-links .desktop-menu {
-    display: none;
-  }
-    .nav-links .navbar .container {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      gap: 4rem;  
-      padding: 1rem;
-    }
 
   label.tab-label-1 {
     margin-left: 16%;
@@ -1419,7 +1483,6 @@ button.trigger {
   .pignose-layerslider .slide-visual .script-wrap {
     right: 250px;
   }
-
 }
 
 @media (max-width: 768px) {
@@ -1483,8 +1546,6 @@ button.trigger {
   .navbar-inverse .navbar-form {
     text-align: center;
   }
-  .nav-links .navbar-header {
-    margin-left: 0%;
   }
   .nav-links .navbar-inverse .navbar-brand {
     padding-top: 25px;
@@ -1708,8 +1769,22 @@ button.trigger {
 }
 
 @media (max-width: 600px) {
-  /* remove top contact */
 
+
+  /* resize img */
+  .navbar-brand {
+    padding: 0;
+  }
+  .navbar-brand img {
+    width: 150px;
+  }
+
+  /* remove top contact */
+  .container .top-links {
+   display: flex;
+   justify-content: center;
+   width: 100%;
+  }
   .top-contacts li {
     display: none;
   }
@@ -2245,7 +2320,7 @@ button.trigger {
   }
   .update-details {
     margin-left: 10%;
-    width: 100%; 
+    width: 100%;
   }
   .update-details h4 {
     font-size: 14px;

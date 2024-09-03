@@ -1,5 +1,6 @@
-<?php 
-function ned_solutions_preprocess_page(&$variables) {
+<?php
+function ned_solutions_preprocess_page(&$variables)
+{
   // Load the node by its ID (replace '1' with your actual node ID).
   $nid = 14; // Replace with the node ID of your banner content.
   $node = \Drupal\node\Entity\Node::load($nid);
@@ -14,13 +15,13 @@ function ned_solutions_preprocess_page(&$variables) {
     if ($link_field) {
       $link_url = $link_field->getUrl()->toString();
       $link_title = $link_field->getTitle();
-      
+
       // Pass the link details to the template.
       $variables['action_button_url'] = $link_url;
       $variables['action_button_title'] = $link_title;
     }
 
-     $images = [];
+    $images = [];
     foreach ($node->get('field_images')->referencedEntities() as $image) {
       // Ensure the image entity has a file.
       if ($image->hasField('field_media_image') && $image->get('field_media_image')->entity) {
@@ -32,5 +33,61 @@ function ned_solutions_preprocess_page(&$variables) {
       }
     }
     $variables['banner_images'] = $images;
+  }
+
+  // Contact info
+  $nid = 15;
+  $node_contact = \Drupal\node\Entity\Node::load($nid);
+
+  if ($node_contact && $node_contact->getType() == 'top_contact_info') {
+    // Access fields from the custom block content.
+    $variables['contact_email'] = $node_contact->get('field_email')->value;
+    $variables['contact_phone'] = $node_contact->get('field_phone_number')->value;
+  }
+
+  // Load the header node.
+  $header_nid = 16;
+  $node_header = \Drupal\node\Entity\Node::load($header_nid);
+
+  // Assign header fields directly.
+  if ($node_header) {
+    // Get the logo image URL.
+    if ($node_header->hasField('field_logo_image') && !$node_header->get('field_logo_image')->isEmpty()) {
+      $logo_media = $node_header->get('field_logo_image')->entity;
+      if ($logo_media && $logo_media->hasField('field_media_image') && !$logo_media->get('field_media_image')->isEmpty()) {
+        $file = $logo_media->get('field_media_image')->entity;
+        if ($file) {
+          $variables['header_logo'] = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+        }
+      }
+    }
+
+    // Get menu items from field_links.
+    $header_menu = [];
+    if ($node_header->hasField('field_links') && !$node_header->get('field_links')->isEmpty()) {
+      // Loop through each item in the 'field_links' field.
+      foreach ($node_header->get('field_links') as $link_item) {
+        // Ensure the item has a valid link.
+        if (!$link_item->isEmpty()) {
+          $header_menu[] = [
+            'url' => $link_item->getUrl()->toString(),
+            'title' => $link_item->get('title')->getString(), // Get the link title.
+          ];
+        }
+      }
+    }
+    $variables['header_menu'] = $header_menu;
+
+
+    // Handle About Us Node
+    $about_us_nid = 18; // Replace with your About Us node ID
+    $about_us_node = \Drupal\node\Entity\Node::load($about_us_nid);
+  
+    if ($about_us_node && $about_us_node->getType() == 'about_us') {
+      $variables['about_us_title'] = $about_us_node->get('title')->value;
+      $variables['about_us_subtitle'] = $about_us_node->get('field_sub_title')->value;
+      $variables['about_us_description'] = $about_us_node->get('field_description_1')->value;
+      $variables['about_us_additional_description'] = $about_us_node->get('field_description_2')->value;
+    }
   }
 }

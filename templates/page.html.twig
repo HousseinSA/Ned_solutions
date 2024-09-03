@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>
     Welcome To NED IT consulting & Outsourcing Corporate website | Home: NED
     solutions
-</title>
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta
@@ -19,13 +20,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <li class="top-hover">
           <p>
             <span class="fas fa-envelope"></span>
-            <a href="mailto:support@company.com">{{contact_email}}</a>
+            <a href="mailto:{{contact_email}}">{{contact_email}}</a>
           </p>
         </li>
         <li class="top-hover">
           <p>
             <span class="fas fa-phone-alt"></span>
-            <a href="tel:+(222)-44275050">{{contact_phone}}</a>
+            <a href="tel:{{contact_phone}}">{{contact_phone}}</a>
           </p>
         </li>
       </ul>
@@ -49,74 +50,69 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <a href="#"><i class="fa-brands fa-linkedin"></i></a>
         </li>
       </ul>
-      <!-- <div class="clearfix"></div> -->
     </div>
   </div>
   <div class="nav-links">
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <!-- Navbar header with logo and hamburger button -->
-        <div class="navbar-header">
-          <button
-            type="button"
-            class="navbar-toggle collapsed"
-            data-toggle="collapse"
-            data-target="#navbar-collapse"
-            aria-expanded="false">
-            <span class="sr-only">Toggle Navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">
-            <img
-              src="{{ base_path ~ directory }}/images/NEDlog.png"
-              width="222"
-              height="75"
-              alt="NED Consulting" />
-          </a>
-        </div>
+  <nav class="navbar">
+  <div class="container">
+    <!-- Navbar header with logo -->
+    <div class="navbar-header">
+      <a class="navb  ar-brand" href="#">
+        <img src="{{ header_logo }}" width="222" height="75" alt="NED Consulting" />
+      </a>
 
-        <!-- Full-width collapsible mobile menu -->
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-          <ul class="nav navbar-nav navbar-right link-effect">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#news">Services</a></li>
-            <li><a href="#portfolio">Consulting</a></li>
-            <li><a href="#update">Case Study</a></li>
-            <li><a href="#shop">Company</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
+      <!-- Hamburger menu button -->
+      <div id="menu-icon" class="menu-icon" onclick="toggleMenu()">
+        <i class="fa fa-bars"></i>
       </div>
-      <!-- /.container -->
-    </nav>
+    </div>
+
+    <!-- Navigation menu -->
+    <div class="navigation" id="navbar">
+      {% if header_menu %}
+      <ul  class="nav navbar-nav  link-effect"> 
+        {% for item in header_menu %}
+        <li>
+          <a href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+        {% endfor %}
+        {% endif %}
+      </ul>
+    </div>
   </div>
+</nav>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Get all the navbar links
-      var navLinks = document.querySelectorAll(".navbar-nav > li > a")
+<script>
+ function toggleMenu() {
+  const menuIcon = document.getElementById('menu-icon');
+  const navbar = document.getElementById('navbar');
 
-      // Loop through each link
-      navLinks.forEach(function(link) {
-        link.addEventListener("click", function(event) {
-          // Prevent default behavior for anchor links
-          event.preventDefault()
+  // Toggle the 'active' class to show/hide the menu
+  navbar.classList.toggle('active');
 
-          // Remove the active class from all links
-          navLinks.forEach(function(navLink) {
-            navLink.parentElement.classList.remove("active")
-          })
-          // Add the active class to the clicked link's parent <li>
-          this.parentElement.classList.add("active")
-        })
-      })
+  // Toggle between "bars" and "X" icon
+  if (navbar.classList.contains('active')) {
+    menuIcon.innerHTML = '<i class="fa fa-times"></i>'; // Change to "X" icon
+  } else {
+    menuIcon.innerHTML = '<i class="fa fa-bars"></i>'; // Change back to "bars" icon
+  }
+}
 
-      // Highlight the current section in the navbar as the user scrolls
-    })
-  </script>
+// Function to close the menu
+function closeMenu() {
+  const menuIcon = document.getElementById('menu-icon');
+  const navbar = document.getElementById('navbar');
+
+  // Remove the 'active' class to hide the menu
+  navbar.classList.remove('active');
+  menuIcon.innerHTML = '<i class="fa fa-bars"></i>'; // Change back to "bars" icon
+}
+
+// Add click event listeners to all menu links
+document.querySelectorAll('.navigation a').forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
+</script>
 
   <!-- banner starts here -->
   <div class="header">
@@ -142,9 +138,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <!-- banner ends here -->
   <!-- about starts here -->
   <div class="about-us" id="about">
-    <h3 class="text-center slideanim">Revolutionize Your Business</h3>
+    <h3 class="text-center slideanim">{{about_us_title}}</h3>
     <p class="text-center slideanim">
-      This Is One Of The Best Corporate Business You've Ever Found.
+      {{about_us_subtitle}}
     </p>
     <div class="container">
       <div class="row">
@@ -160,16 +156,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="col-md-6 col-sm-12 col-xs-12 slideanim">
           <p class="p1">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book.
+            {{about_us_description}}
           </p>
           <p class="p2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book
+            {{about_us_additional_description}}
           </p>
           <div class="social-store">
             <a href="#"><img
@@ -808,20 +798,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     })
   </script>
 
-<script>
-  
-  // var bannerImages = {{ banner_images | json_encode | raw }}
- var  imagesUrl = []
- for (let i = 0 ; i < bannerImages.length; i++){
-   imagesUrl.push( bannerImages[i].url);
- }
-  var myBgFader = $(".header").bgfader(imagesUrl, {
-    timeout: 3000,
-    speed: 3000,
-    opacity: 0.4,
-  });
-  myBgFader.start();
-</script> 
+  <script>
+    // Correctly initialize the JavaScript object with JSON data
+    var bannerImages = {
+      {
+        banner_images | json_encode | raw
+      }
+    };
+
+    var imagesUrl = [];
+    for (let i = 0; i < bannerImages.length; i++) {
+      imagesUrl.push(bannerImages[i].url);
+    }
+
+    // Initialize bgfader plugin with the image URLs
+    var myBgFader = $(".header").bgfader(imagesUrl, {
+      timeout: 3000,
+      speed: 3000,
+      opacity: 0.4,
+    });
+
+    myBgFader.start();
+  </script>
 
 
   <script>
