@@ -733,37 +733,14 @@ document.querySelectorAll('.navigation a').forEach(link => {
           </div>
         </div>
       </div>
-      <nav class="navbar navbar-inverse">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <button
-              type="button"
-              class="navbar-toggle"
-              data-toggle="collapse"
-              data-target="#lastnavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <p>
-              © 2016 Realvision Communications Group Sarl. All Rights Reserved
-              | Design by
-              <a href="http://Realvisiondigital.com">Realvision Digital</a>
+            <p style="padding: 1rem;  text-align: center;
+  text-align: center; color:white;
+">
+              © 2024 All Rights Reserved
+              | <span style="color: #f9b448;"> Ned Solutions</span>
             </p>
           </div>
-          <div class="navbar-collapse" id="lastnavbar">
-            <ul class="nav navbar-nav navbar-right link-effect">
-              <li class="active"><a href="#myPage">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#news">News</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#update">Blog</a></li>
-              <li><a href="#shop">Shop</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
     </div>
     <hr />
     <a href="#myPage" title="To Top"><span class="glyphicon glyphicon-chevron-up"></span></a>
@@ -800,11 +777,7 @@ document.querySelectorAll('.navigation a').forEach(link => {
 
   <script>
     // Correctly initialize the JavaScript object with JSON data
-    var bannerImages = {
-      {
-        banner_images | json_encode | raw
-      }
-    };
+    var bannerImages = {{banner_images | json_encode | raw}};
 
     var imagesUrl = [];
     for (let i = 0; i < bannerImages.length; i++) {

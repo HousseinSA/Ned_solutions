@@ -60,6 +60,9 @@ body {
 .top-bar {
   background-color: #16518d;
   padding: 17px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 ul.top-contacts,
@@ -104,19 +107,47 @@ ul.top-links li select.lang {
 }
 /*-- /top-bar --*/
 /*-- navbar --*/
-.navbar  {
-  position: sticky; 
+
+/* for admin login  */
+/* .login-user {
+  margin: 2rem auto;
+  display: flex !important;
+  justify-content: center;
+  min-height: 100vh !important;
+} */
+.login {
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+}
+#edit-name,#edit-pass   {
+  margin: .5rem 0 !important;
+}
+#edit-name,#edit-pass input {
+  padding: 0.5rem 0.2rem !important;
+
+}
+
+.js-form-required {
+  color: #f9b448 !important;
+}
+.container {
+  margin: 0 auto !important;
+}
+.nav-links {
+  position: sticky;
   top: 0;
   z-index: 1000; /* Ensures the navbar stays above other content */
   background-color: #fff; /* Prevent transparency issues */
 }
-.nav>li>a:focus, .nav>li>a:hover {
-  background: none !important;
-}
 
+.navbar-header {
+  margin: 0 !important;
+}
 .navbar {
   border-radius: 0px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0 !important;
 }
 
 .navbar-inverse .navbar-nav > .open > a,
@@ -135,7 +166,7 @@ ul.top-links li select.lang {
   width: 100%;
   margin: 0 auto;
   display: flex;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   align-items: center;
   justify-content: space-between;
 }
@@ -165,7 +196,7 @@ ul.top-links li select.lang {
 }
 
 .nav-links .navbar-nav > li > a {
-  padding: 0 0 0.2rem ;
+  padding: 0 0 0.2rem;
   color: #16518d;
   margin-left: 1.4rem;
   font-size: 1.6rem;
@@ -183,6 +214,7 @@ ul.top-links li select.lang {
   color: #f9b448;
   background-color: #ffffff;
 }
+
 /*-- Link Effect: bottom border enlarge --*/
 .link-effect a {
   padding: 0 0 10px;
@@ -606,7 +638,7 @@ footer {
   background: url(../images/twinkle.png) repeat;
 }
 .footer-info {
-  margin: 0 auto;
+  margin: 0 auto !important;
   vertical-align: middle;
 }
 footer .footer-gallery .image-gallery img {
@@ -1325,6 +1357,7 @@ button.trigger {
     margin-left: -17%;
   }
 }
+
 .menu-icon {
   cursor: pointer;
   font-size: 24px;
@@ -1350,7 +1383,6 @@ button.trigger {
   display: none; /* Hidden by default */
 }
 
-
 @media (max-width: 900px) {
   /* main navigation */
   .navigation {
@@ -1363,13 +1395,13 @@ button.trigger {
     margin-left: auto;
   }
   .navbar-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding-right: 2.5rem;
-  padding-left: 2.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* padding-right: 2.5rem;
+  padding-left: 2.5rem; */
   }
-  .navbar{
+  .navbar {
     box-shadow: none;
   }
 
@@ -1379,7 +1411,7 @@ button.trigger {
   }
 
   /* Other styles for the navbar on mobile */
-  
+
   .navbar-nav {
     position: absolute;
     width: auto; /* Allow the width to adjust based on the content */
@@ -1432,6 +1464,15 @@ button.trigger {
 }
 
 @media (max-width: 800px) {
+  .nav-links .desktop-menu {
+    display: none;
+  }
+  .nav-links .navbar .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  }
 
   label.tab-label-1 {
     margin-left: 16%;
@@ -1546,6 +1587,8 @@ button.trigger {
   .navbar-inverse .navbar-form {
     text-align: center;
   }
+  .nav-links .navbar-header {
+    margin-left: 0%;
   }
   .nav-links .navbar-inverse .navbar-brand {
     padding-top: 25px;
@@ -1769,22 +1812,8 @@ button.trigger {
 }
 
 @media (max-width: 600px) {
-
-
-  /* resize img */
-  .navbar-brand {
-    padding: 0;
-  }
-  .navbar-brand img {
-    width: 150px;
-  }
-
   /* remove top contact */
-  .container .top-links {
-   display: flex;
-   justify-content: center;
-   width: 100%;
-  }
+
   .top-contacts li {
     display: none;
   }

@@ -2,7 +2,7 @@ name: "Ned Solutions"
 type: theme
 description: "A custom theme for Ned Solutions, based on an HTML template."
 package: Custom
-core_version_requirement: ^11
+core_version_requirement: ^10
 base theme: false
 libraries:
   - ned_solutions/files
