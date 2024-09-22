@@ -1,0 +1,18 @@
+
+        <div class="col-md-6 col-sm-12 col-xs-12 slideanim" >
+            {% if field_name == 'field_video_link' %}
+            <div class="video" {{ attributes.addClass('quickedit-field') }}>
+                <iframe
+                    src="{{ items.0.content['#url'] }}"
+                    frameborder="0"
+                    webkitallowfullscreen
+                    mozallowfullscreen
+                    allowfullscreen></iframe>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12 slideanim" {{ attributes.addClass('quickedit-field') }}>
+            {% if field_name == 'field_summary_1' %}
+            {{ items.0.content }}
+            {% endif %}
+        </div>

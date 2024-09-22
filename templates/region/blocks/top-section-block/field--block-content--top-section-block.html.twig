@@ -1,0 +1,37 @@
+<ul class="top-contacts" {{ attributes.addClass('quickedit-field') }}>
+  {% if field_name == 'field_email' %}
+  <li class="top-hover" >
+    <p>
+      <span class="fas fa-envelope"></span>
+      <a href="mailto:{{ items.0.content }}">{{ items.0.content }}</a>
+    </p>
+  </li>
+  {% endif %}
+
+  {% if field_name == 'field_phone_number' %}
+  <li class="top-hover"  >
+    <p>
+      <span class="fas fa-phone-alt"></span>
+      <a href="tel:{{ items.0.content }}">{{ items.0.content }}</a>
+    </p>
+  </li>
+  {% endif %}
+</ul>
+
+<ul class="top-links" {{ attributes.addClass('quickedit-field') }}>
+  {% if field_name == 'field_icons' %}
+  {% for item in items %}
+  <li>
+    <a href="{{ item.content['#url'] }}">
+      {% if loop.index == 1 %}
+      <i class="fa-brands fa-facebook"></i>
+      {% elseif loop.index == 2 %}
+      <i class="fa-brands fa-x-twitter"></i>
+      {% elseif loop.index == 3 %}
+      <i class="fa-brands fa-linkedin"></i>
+      {% endif %}
+    </a>
+  </li>
+  {% endfor %}
+  {% endif %}
+</ul>

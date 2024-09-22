@@ -1,0 +1,63 @@
+{# Render subtitle field if it exists #}
+{% if field_name == 'field_title' %}
+<span class="shortline1-1"></span>
+<span class="shortline1-2"></span>
+<span class="shortline1-3"></span>
+<h3 {{ attributes.addClass('quickedit-field') }}>{{ items.0.content }}</h3>
+<span class="shortline2-1"></span>
+<span class="shortline2-2"></span>
+<span class="shortline2-3"></span>
+{% endif %}
+
+{# Render title field if it exists #}
+{% if field_name == 'field_sub_title' %}
+<h2 {{ attributes.addClass('quickedit-field') }}>{{ items.0.content }}</h2>
+{% endif %}
+
+<span class="longline1"></span>
+<span class="longline2"></span>
+<span class="longline3"></span>
+
+{# Render summary field if it exists #}
+{% if field_name == 'field_summary' %}
+<p {{ attributes.addClass('quickedit-field') }}>{{ items.0.content }}</p>
+{% endif %}
+
+{# Render action button if it exists #}
+{% if field_name == 'field_action_button' %}
+<a href='{{items.0.content['#url'] }}' class='btn btn-default btn-lg' {{ attributes.addClass('quickedit-field') }}>{{items.0.content['#title'] }}</a>
+{% endif %}
+
+
+{# Render hero images for JavaScript if it exists #}
+{% if field_name == 'field_hero_image' %}
+<div {{ attributes.addClass('quickedit-field') }} id="hero-images-container" style="display: none;">
+    {{ items.0.content }}
+    {{ items.1.content }}
+    {{ items.2.content }}
+</div>
+
+<script>
+    // Wait until the DOM is fully loaded
+    document.addEventListener("DOMContentLoaded", function() {
+        // Extract URLs from img elements
+        var imagesUrl = [];
+        var imgElements = document.querySelectorAll('#hero-images-container img');
+
+        imgElements.forEach(function(img) {
+            imagesUrl.push(img.src);
+        });
+
+
+        if (imagesUrl.length > 0) {
+            // Initialize bgfader plugin with the image URLs
+            var myBgFader = $(".header").bgfader(imagesUrl, {
+                timeout: 3000,
+                speed: 3000,
+                opacity: 0.4,
+            });
+            myBgFader.start();
+        }
+    });
+</script>
+{% endif %}

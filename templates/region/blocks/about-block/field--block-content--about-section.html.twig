@@ -1,0 +1,11 @@
+{% if field_name == 'field_title' %}
+
+<h3 class="text-center slideanim" {{ attributes.addClass('quickedit-field') }}>
+    {{ items.0.content }}
+</h3>
+{% endif %}
+{% if field_name == 'field_sub_title' %}
+<p class="text-center slideanim" {{ attributes.addClass('quickedit-field') }}>
+    {{ items.0.content }}
+</p>
+{% endif %}
