@@ -1,0 +1,61 @@
+<div id="visual">
+  <div class="slide-visual slideanim">
+    <ul class="slide-group slide-img"  {{ attributes.addClass('quickedit-field') }}  >
+      {# Loop over the images in the hero field #}
+      {% if field_name == 'field_hero_image' %}
+        {% for item in items %}
+          {# Show only the first three items (indexes 0, 1, 2) #}
+          {% if loop.index0 < 3 %}
+            <li>
+              {{ item.content }}
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </ul>
+    <div class="script-wrap" {{ attributes.addClass('quickedit-field') }}>
+      <ul class="script-group card-img">
+        {# Loop over the remaining images, starting from index 3 #}
+        {% if field_name == 'field_hero_image' %}
+          {% for item in items %}
+            {# Start loop at index 3 (fourth item onward) #}
+            {% if loop.index0 >= 3 %}
+              <li>
+                <div class="inner-script">
+                  {{ item.content }}
+                </div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </ul>
+      <div class="slide-controller">
+        <a href="#" class="btn-prev">
+          <img src="{{ base_path ~ directory }}/images/btn_prev.png" alt="Prev Slide" />
+        </a>
+        <a href="#" class="btn-play">
+          <img src="{{ base_path ~ directory }}/images/btn_play.png" alt="Start Slide" />
+        </a>
+        <a href="#" class="btn-pause">
+          <img src="{{ base_path ~ directory }}/images/btn_pause.png" alt="Pause Slide" />
+        </a>
+        <a href="#" class="btn-next">
+          <img src="{{ base_path ~ directory }}/images/btn_next.png" alt="Next Slide" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Select all images within the slide group
+    const images = document.querySelectorAll("#visual .slide-group img");
+    
+    // Loop through the NodeList of images
+    images.forEach(function(image) {
+      // Add the class 'img-responsive' to each image
+      image.classList.add("img-responsive");
+    });
+  });
+</script>
+

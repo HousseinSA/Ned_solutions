@@ -11,5 +11,6 @@ regions:
   header: 'Header'
   hero_section: 'Hero Section'
   about_section: 'About Section'
-  services_section: 'Services Section'
+  news_section: 'News Section'
+  portfolio_section: 'portfolio Section'
   footer: 'Footer'

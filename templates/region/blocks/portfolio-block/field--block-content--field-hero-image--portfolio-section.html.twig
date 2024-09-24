@@ -1,0 +1,71 @@
+<section class="tabs slideanim">
+  <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+  <label for="tab-1" class="tab-label-1">All</label>
+  
+  <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+  <label for="tab-2" class="tab-label-2">Banking and Financial</label>
+
+  <input id="tab-3" type="radio" name="radio-set" class="tab-selector-3" />
+  <label for="tab-3" class="tab-label-3">Enterprises</label>
+
+  <input id="tab-4" type="radio" name="radio-set" class="tab-selector-4" />
+  <label for="tab-4" class="tab-label-4">Real Estate & Construction</label>
+
+  <div class="clear-shadow"></div>
+
+  <div class="content">
+    {# Loop through the images dynamically #}
+    <div class="content-1">
+       {% if field_name == 'field_hero_image' %}
+      {% for item in items %}
+        {{ item.content }}
+      {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="content-2">
+      {% for image in content.field_hero_image %}
+        <a href="{{ image.content }}" title="Our Portfolio">
+        {{ image.content }}
+        </a>
+      {% endfor %}
+    </div>
+
+    <div class="content-3">
+      {% for image in content.field_hero_image %}
+        <a href="{{ image.content }}" title="Our Portfolio">
+        {{ image.content }}
+        </a>
+      {% endfor %}
+    </div>
+
+    <div class="content-4">
+      {% for image in content.field_hero_image %}
+        <a href="{{ image.content }}" title="Our Portfolio">
+        {{ image.content }}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  // Select all the <a> tags that have images inside the content divs
+  const contentDivs = document.querySelectorAll('.content div');
+
+  contentDivs.forEach((div) => {
+    // Loop through all the <a> tags inside each content div
+    div.querySelectorAll('a').forEach((link) => {
+      // Get the <img> element inside each <a> tag
+      const img = link.querySelector('img');
+      
+      if (img) {
+        // Add the required class to each <img> tag
+        img.classList.add('outer', 'img-responsive', 'slideanim');
+      }
+    });
+  });
+});
+
+</script>

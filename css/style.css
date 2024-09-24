@@ -387,6 +387,15 @@ span.longline3 {
 }
 /*-- /About-Us --*/
 /*-- News --*/
+
+.slide-img img {
+  width:1000px !important ;
+  height:424px !important ;
+}
+.card-img img {
+  width:276px !important ;
+  height:288px !important ;
+}
 .our-news {
   margin: 0;
   padding: 0;
@@ -943,6 +952,7 @@ button.trigger {
   opacity: 1;
   pointer-events: auto;
 }
+
 
 .dialog__content {
   width: 50%;
