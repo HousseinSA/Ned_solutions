@@ -1,0 +1,47 @@
+  <div class="content" {{ attributes.addClass('quickedit-field') }}>
+    <div class="content-1" {{ attributes.addClass('quickedit-field') }} >
+      {% if field_name == 'field_hero_image' %}
+      {% for item in items %}
+      {% set image = item.content['#media'] %}
+      {% set image_uri = image.field_media_image.entity.uri.value %}
+      <a href="{{ file_url(image_uri) }}" title="Our Portfolio">
+        <img src="{{ file_url(image_uri) }}" alt="example-1" class="outer img-responsive slideanim" />
+      </a>
+      {% endfor %}
+      {% endif %}
+    </div>
+    <div class="content-2" {{ attributes.addClass('quickedit-field') }}>
+      {% if field_name == 'field_hero_image' %}
+      {% for item in items %}
+      {% set image = item.content['#media'] %}
+      {% set image_uri = image.field_media_image.entity.uri.value %}
+      <a href="{{ file_url(image_uri) }}" title="Our Portfolio">
+        <img src="{{ file_url(image_uri) }}" alt="example-2" class="outer img-responsive slideanim" />
+      </a>
+      {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="content-3" {{ attributes.addClass('quickedit-field') }}>
+      {% if field_name == 'field_hero_image' %}
+      {% for item in items %}
+      {% set image = item.content['#media'] %}
+      {% set image_uri = image.field_media_image.entity.uri.value %}
+      <a href="{{ file_url(image_uri) }}" title="Our Portfolio">
+        <img src="{{ file_url(image_uri) }}" alt="example-3" class="outer img-responsive slideanim" />
+      </a>
+      {% endfor %}
+      {% endif %}
+    </div>
+    <div class="content-4" {{ attributes.addClass('quickedit-field') }}>
+      {% if field_name == 'field_hero_image' %}
+      {% for item in items %}
+      {% set image = item.content['#media'] %}
+      {% set image_uri = image.field_media_image.entity.uri.value %}
+      <a href="{{ file_url(image_uri) }}" title="Our Portfolio">
+        <img src="{{ file_url(image_uri) }}" alt="example-4" class="outer img-responsive slideanim" />
+      </a>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>

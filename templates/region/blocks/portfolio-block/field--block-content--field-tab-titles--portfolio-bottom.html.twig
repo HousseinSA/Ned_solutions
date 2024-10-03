@@ -1,0 +1,14 @@
+{% if field_name == 'field_tab_titles' %}
+    {% for item in items %}
+      <input
+        id="tab-{{ loop.index }}"
+        type="radio"
+        name="radio-set"
+        class="tab-selector-{{ loop.index }}"
+        {% if loop.index == 1 %} checked="checked" {% endif %} />
+      <label for="tab-{{ loop.index }}" class="tab-label-{{ loop.index }}" {{ attributes.addClass('quickedit-field') }}> 
+        {{ item.content }}
+      </label>
+    {% endfor %}
+    <div class="clear-shadow"></div>
+{% endif %}

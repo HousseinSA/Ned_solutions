@@ -155,6 +155,15 @@ ul.top-links li select.lang {
   padding: 15px 22px;
 }
 
+
+.nav-links {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensures the navbar stays above other content */
+  background-color: #fff; /* Prevent transparency issues */
+}
+
+
 .nav-links .navbar .container {
   width: 100%;
   margin: 0 auto;
@@ -867,6 +876,7 @@ footer span.glyphicon.glyphicon-chevron-up {
   visibility: hidden;
 }
 .slide {
+  margin-bottom: 1rem;
   /* The name of the animation */
   animation-name: slide;
   -webkit-animation-name: slide;

@@ -7,10 +7,13 @@ base theme: false
 libraries:
   - ned_solutions/files
 regions:
+  content: "Content"
   top_section: 'Top Section' 
   header: 'Header'
   hero_section: 'Hero Section'
   about_section: 'About Section'
   news_section: 'News Section'
   portfolio_section: 'portfolio Section'
-  footer: 'Footer'
+  contact_section: 'Contact Section'
+  update_section: 'Update Section'
+  footer_section: 'Footer Section'

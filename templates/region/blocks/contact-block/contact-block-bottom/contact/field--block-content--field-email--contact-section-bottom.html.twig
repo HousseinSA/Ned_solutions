@@ -1,0 +1,10 @@
+{% if field_name == 'field_email' %}
+<div class="email-info"  {{ attributes.addClass('quickedit-field') }} >
+    <i class="glyphicon glyphicon-envelope" style="color: #f9b448;"></i>
+    <a href="mailto:{{ items.0.content }}">
+        <p>{{ items.0.content }}</p>
+    </a>
+
+</div>
+<!-- Contact subtitle field -->
+{% endif %}

@@ -1,0 +1,8 @@
+{% if field_name == 'field_phone_number' %}
+<div class="phone"  {{ attributes.addClass('quickedit-field') }}>
+    <i class="glyphicon glyphicon-phone-alt" style="color: #f9b448;"></i>
+    <a href="tel:{{ items.0.content }}">
+        <p>{{ items.0.content }}</p>
+    </a>
+</div>
+{% endif %}
