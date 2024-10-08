@@ -12,7 +12,7 @@ regions:
   header: 'Header'
   hero_section: 'Hero Section'
   about_section: 'About Section'
-  news_section: 'News Section'
+  client_section: 'Client Section'
   portfolio_section: 'portfolio Section'
   contact_section: 'Contact Section'
   update_section: 'Update Section'

@@ -89,6 +89,65 @@
                     })
                 })
             </script>
-            </body>
 
+<script>
+    $(document).ready(function() {
+    // First row normal sliding
+    $('.logo-row:not(.reverse)').pignoseLayerSlider({
+        autoplay: true,
+        interval: 3000,
+        easing: 'easeInOutExpo',
+        duration: 1000,
+        effect: 'slide', // Assuming 'slide' is a valid option in pignose.layerslider.js
+        direction: 'left'
+    });
+
+    // Second row reverse sliding
+    $('.logo-row.reverse').pignoseLayerSlider({
+        autoplay: true,
+        interval: 3000,
+        easing: 'easeInOutExpo',
+        duration: 1000,
+        effect: 'slide',
+        direction: 'right'
+    });
+});
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slider = document.querySelector('.logo-slider-row');
+      
+      let step = 1; // Speed of the sliding
+      let currentPosition = 0;
+    
+      // Clone logos to loop seamlessly
+      const slides = Array.from(slider.children);
+      slides.forEach(slide => {
+        const clone = slide.cloneNode(true);
+        slider.appendChild(clone); // Duplicate logos
+      });
+    
+      // Adjust slider width to fit all slides + clones
+      const totalSlides = slider.children.length;
+      const slideWidth = slides[0].offsetWidth; // Assuming all slides have the same width
+      slider.style.width = `${totalSlides * slideWidth}px`;
+    
+      function slide() {
+        currentPosition -= step; // Normal direction sliding
+    
+        if (currentPosition <= -slider.scrollWidth / 2) {
+          currentPosition = 0; // Reset position after halfway
+        }
+    
+        slider.style.transform = `translateX(${currentPosition}px)`;
+        requestAnimationFrame(slide); // Keep the animation smooth
+      }
+    
+      // Start the sliding animation
+      slide();
+    });
+    </script>
+            </body>
             </html>

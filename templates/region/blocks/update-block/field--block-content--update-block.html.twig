@@ -1,0 +1,39 @@
+<div class="container">
+    {% if field_name == 'field_update_paragraph' %}
+    <div class="row">
+        {% for item in items %}
+        <div class="col-md-6 col-xs-12">
+            <div class="row slideanim" {{ attributes.addClass('quickedit-field') }}>
+                <div class="col-xs-5">
+                    <div class="view2 view-sixth">
+                        {% set paragraph = item.content['#paragraph'] %}
+                        <img src="{{ file_url(paragraph.field_image.entity.field_media_image.entity.uri.value) }}">
+                        <div class="mask2">
+                            <h4>Dec-21-2015</h4>
+                            <p>Check Out Our Latest Updates.</p>
+                            <a href="#contact" class="info">Locate us </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-7">
+                    
+                    <div class="update-details">
+                        <h4>
+                            {{ item.content["#paragraph"].fields.field_title.value }}
+                        </h4>
+                        <p>
+                            {{ item.content["#paragraph"].fields.field_sub_title.value }}
+                        </p>
+                        {% set link = item.content['#paragraph'].fields.field_contact_link[0]
+            %}
+                        <a href="{{ link.uri | replace({'internal:': ''}) }}">{{
+             link.title
+            }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

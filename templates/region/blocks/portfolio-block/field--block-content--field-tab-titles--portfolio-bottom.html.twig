@@ -6,7 +6,7 @@
         name="radio-set"
         class="tab-selector-{{ loop.index }}"
         {% if loop.index == 1 %} checked="checked" {% endif %} />
-      <label for="tab-{{ loop.index }}" class="tab-label-{{ loop.index }}" {{ attributes.addClass('quickedit-field') }}> 
+      <label for="tab-{{ loop.index }}" class="tab-label-{{ loop.index }}" > 
         {{ item.content }}
       </label>
     {% endfor %}

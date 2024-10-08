@@ -1,0 +1,31 @@
+<select id="language-select" class="selector" >
+  {% for item in items %}
+    <option value="{{ item.content['#url'] }}">
+      {{ item.content['#title'] }}
+    </option>
+  {% endfor %}
+</select>
+
+
+<script>
+  // On page load, check if there's a saved language in localStorage
+  document.addEventListener("DOMContentLoaded", function () {
+    const savedLanguage = localStorage.getItem("selectedLanguage");
+    const languageSelect = document.getElementById("language-select");
+
+    if (savedLanguage) {
+      languageSelect.value = savedLanguage;
+    }
+
+    // Add an event listener for language change
+    languageSelect.addEventListener("change", function () {
+      const selectedUrl = languageSelect.value;
+
+      // Save the selected language in localStorage
+      localStorage.setItem("selectedLanguage", selectedUrl);
+
+      // Redirect to the selected language URL
+      window.location.href = selectedUrl;
+    });
+  });
+</script>
