@@ -2,63 +2,36 @@
 <div class="myportfolio" id="portfolio">  
       {{content}}
     </div>
-    <!-- /news -->
 
+
+
+
+    
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Get all images inside the element with ID 'myportfolio'
-  const images = document.querySelectorAll('#myportfolio img');
-  
-  // Loop through each image and add the required classes
-  images.forEach(function(img) {
-    img.classList.add('outer', 'img-responsive', 'slideanim');
-  });
+    const tabSelectors = document.querySelectorAll('input[name="radio-set"]');
+    const tabContents = document.querySelectorAll('.content > div');
+
+    function showFirst8Images(contentDiv) {
+        const images = contentDiv.querySelectorAll('a');
+        images.forEach((image, index) => {
+            image.style.display = index < 8 ? "inline-block" : "none";
+        });
+    }
+
+    function switchTabContent(selectedTabIndex) {
+        tabContents.forEach((content, index) => {
+            content.style.display = index === selectedTabIndex ? "block" : "none";
+            if (index === selectedTabIndex) showFirst8Images(content);
+        });
+    }
+
+    switchTabContent(0); // Show the first tab on load
+
+    tabSelectors.forEach((selector, index) => {
+        selector.addEventListener('change', function() {
+            switchTabContent(index);
+        });
+    });
 });
-
-
-</script>
-
-
-{# HIDE IMAGES ON TAB  #}
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const tabSelectors = document.querySelectorAll('input[name="radio-set"]');
-  const tabContents = document.querySelectorAll('.content > div'); // All content divs (content-1, content-2, etc.)
-
-  // Function to show only 8 images in the selected content div
-  function showFirst8Images(contentDiv) {
-    const images = contentDiv.querySelectorAll('a');
-    images.forEach((image, index) => {
-      if (index < 8) {
-        image.style.display = "inline-block"; // Show the first 8 images (2 rows)
-      } else {
-        image.style.display = "none"; // Hide the rest
-      }
-    });
-  }
-
-  // Hide all content divs except the one corresponding to the selected tab
-  function switchTabContent(selectedTabIndex) {
-    tabContents.forEach((content, index) => {
-      if (index === selectedTabIndex) {
-        content.style.display = "block"; // Show the selected content
-        showFirst8Images(content); // Only show 8 images
-      } else {
-        content.style.display = "none"; // Hide the unselected content
-      }
-    });
-  }
-
-  // Initialize: show only the first 8 images of the first tab content
-  switchTabContent(0);
-
-  // Add event listeners to the tab selectors
-  tabSelectors.forEach((selector, index) => {
-    selector.addEventListener('change', function() {
-      switchTabContent(index); // Change the displayed content based on the selected tab
-    });
-  });
-});
-
 </script>

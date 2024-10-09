@@ -17,6 +17,8 @@ files:
     # # Local JS
     js/modernizr.custom.js: {}
     js/SmoothScroll.min.js: {}
+    # js/bgfader.js: {}
+    # js/pignose.layerslider.js: {}
     js/cobox.js: {}
   dependencies:
     - core/jquery

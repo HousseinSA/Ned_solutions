@@ -1,14 +1,45 @@
+<!-- Tabs for larger screens -->
 {% if field_name == 'field_tab_titles' %}
     {% for item in items %}
-      <input
-        id="tab-{{ loop.index }}"
-        type="radio"
-        name="radio-set"
-        class="tab-selector-{{ loop.index }}"
+      <input id="tab-{{ loop.index }}" type="radio" name="radio-set" class="tab-selector-{{ loop.index }}"
         {% if loop.index == 1 %} checked="checked" {% endif %} />
-      <label for="tab-{{ loop.index }}" class="tab-label-{{ loop.index }}" > 
-        {{ item.content }}
-      </label>
+      <label for="tab-{{ loop.index }}" class="tab-label-{{ loop.index }}">{{ item.content }}</label>
     {% endfor %}
     <div class="clear-shadow"></div>
 {% endif %}
+
+<!-- Dynamic Dropdown for smaller screens -->
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" style="background-color:#f9b448;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{ items[0].content }} <!-- Set initial button text to the first tab title -->
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    {% for item in items %}
+      <a class="dropdown-item" href="#tab-{{ loop.index }}" onclick="document.getElementById('tab-{{ loop.index }}').click();">
+        {{ item.content }}
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    const dropdownButton = document.getElementById('dropdownMenuButton');
+
+    // Initialize button text with the first tab content
+    dropdownButton.textContent = "{{ items[0].content }}";
+
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const tabId = this.getAttribute('href').replace('#', '');
+            
+            // Programmatically click the associated tab
+            document.getElementById(tabId).click();
+            
+            // Update dropdown button text with the selected tab's name
+            dropdownButton.textContent = this.textContent;
+        });
+    });
+});
+</script>
