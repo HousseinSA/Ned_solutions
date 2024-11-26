@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
   padding: 0;
   margin: 0;
@@ -7,7 +9,7 @@ body {
 body,
 td,
 th {
-  font-family: Michroma, sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #034;
 }
 
@@ -40,7 +42,7 @@ p {
 }
 ul {
   margin: 0;
-  padding: 0;
+  /* padding: 0; */
 }
 label {
   margin: 0;
@@ -53,16 +55,43 @@ button {
   -ms-transition: 0.5s all;
 }
 
+
+/* login form  */
+
+.user-login-form {
+  width: 100% ;
+  margin: 1rem;
+}
+
+.js-form-required {
+  color: #f9b448 !important;
+}
+
+
+.form-text  {
+  margin-bottom: .5rem;
+  width: auto;
+  max-width: 50%;
+  padding: .5rem;
+}
+
+.form-submit {
+background-color:#f9b448 ;
+padding: .5rem 1rem ;
+border-radius: .5rem;
+color: white;
+border: none;
+}
 /*-- /reset code --*/
 /*-- top-bar --*/
 body {
-  font-family: "Michroma", sans-serif;
+   font-family: "Poppins", sans-serif;
 }
+
 .top-bar {
   background-color: #16518d;
-  padding: 17px 0;
-  display: flex;
-  justify-content: center;
+  padding: 17px;
+  display: grid;
   width: 100%;
 }
 
@@ -77,12 +106,56 @@ ul.top-contacts {
 ul.top-links {
   float: right;
 }
+
+.language-dropdown {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.selected-language {
+  display: flex;
+  align-items: center;
+  color: #f9b448;
+}
+
+.lang-img {
+  width: 25px; 
+  height: 25px;
+  border-radius: 50%; /* Use 50% for perfect circles */
+  margin-right: 5px;
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.language-options {
+  display: none; /* Ensures the dropdown is hidden by default */
+  position: absolute;
+  top: 100%;
+  right: 25px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.language-option {
+  padding: 5px 25px 5px 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.language-option:hover {  
+  background-color: #f9b448;
+}
+
 ul.top-contacts li p span,
 ul.top-contacts p a,
 ul.top-links li a,
 ul.top-links li a i {
   color: #f9b448;
-}
+}ul
 ul.top-contacts li {
   margin-right: 25px;
 }
@@ -112,18 +185,6 @@ ul.top-links li select.lang {
   display: none !important;
 }
 
-#edit-name,
-#edit-pass {
-  margin: 0.5rem 0 !important;
-}
-#edit-name,
-#edit-pass input {
-  padding: 0.5rem 0.2rem !important;
-}
-
-.js-form-required {
-  color: #f9b448 !important;
-}
 .container {
   margin: 0 auto !important;
 }
@@ -157,12 +218,14 @@ ul.top-links li select.lang {
 
 
 .nav-links {
-  position: sticky;
-  top: 0;
-  z-index: 1000; /* Ensures the navbar stays above other content */
-  background-color: #fff; /* Prevent transparency issues */
+  position: sticky; /* Changed from sticky to fixed */
+  top: 0; 
+  left: 0;
+  width: 100%; /* Ensures it spans the full width of the viewport */
+  z-index: 50; /* Ensures it stays above other elements */
+  background-color: #fff; /* White background to avoid transparency */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
 }
-
 
 .nav-links .navbar .container {
   width: 100%;
@@ -181,7 +244,7 @@ ul.top-links li select.lang {
 
 .nav-links .navbar-inverse .navbar-brand {
   color: #0a0a0a;
-  font-family: "Orbitron", sans-serif;
+   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   font-size: 30px;
   font-weight: 600;
@@ -260,23 +323,23 @@ ul.top-links li select.lang {
   padding-top: 130px;
 }
 .banner-info h3 {
-  font-family: "Orbitron", sans-serif;
+   font-family: "Poppins", sans-serif;
   color: #fff;
   font-size: 25px;
   font-weight: 400;
   text-transform: uppercase;
 }
 .banner-info h2 {
-  font-family: "Orbitron", sans-serif;
+   font-family: "Poppins", sans-serif;
   color: #fff;
   font-size: 37px;
-  padding: 20px 0 30px;
+  padding: 20px;
   text-transform: uppercase;
   font-weight: 500;
 }
 .banner-info p {
   color: #fff;
-  padding: 30px 290px;
+  padding: 0 290px 30px 290px;
   font-size: 15px;
   word-spacing: 5px;
   line-height: 25px;
@@ -355,7 +418,7 @@ span.longline3 {
   padding: 0;
 }
 .about-us h3 {
-  font-family: "Orbitron", sans-serif;
+   font-family: "Poppins", sans-serif;
   color: grey;
   font-size: 30px;
   font-weight: 400;
@@ -397,20 +460,12 @@ span.longline3 {
 /*-- /About-Us --*/
 /*-- News --*/
 
-.slide-img img {
-  width:1000px !important ;
-  height:424px !important ;
-}
-.card-img img {
-  width:276px !important ;
-  height:288px !important ;
-}
 .our-news {
   margin: 0;
   padding: 0;
 }
 .our-news h3.text-center {
-  font-family: "Orbitron", sans-serif;
+   font-family: "Poppins", sans-serif;
   color: grey;
   font-size: 30px;
   font-weight: 400;
@@ -423,9 +478,49 @@ span.longline3 {
   font-weight: 500;
   padding: 10px 0 40px;
 }
-.inner-script h3 {
-  top: 1%;
+.logo-slider-container {
+  position: relative;
+  width: 70vw; /* 70% of the viewport width on larger screens */
+  height: 100px; /* Adjust based on logo sizes */
+  overflow: hidden; /* Hide overflowing content */
+  margin: 0 auto; /* Center the container */
 }
+
+.logo-slider-row {
+  display: flex; /* Align logos in a row */
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap; /* Prevent logos from wrapping */
+  transition: transform 0.1s linear; /* Smooth sliding effect */
+}
+
+.logo-slide {
+  flex-shrink: 0; /* Prevent logos from shrinking */
+}
+
+.logo-slide img {
+  width: 100px; /* Adjust based on logo size */
+  height: auto;
+  object-fit: contain;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+  .logo-slider-container {
+    width: 85vw; /* 85% of the viewport width on smaller screens */
+  }
+
+  .logo-slide img {
+    width: 80px; /* Adjust the logo size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-slide img {
+    width: 60px; /* Further reduce logo size on smaller screens */
+  }
+}
+
 /*-- /News --*/
 /*-- portfolio --*/
 .myportfolio {
@@ -433,8 +528,9 @@ span.longline3 {
   margin: 0;
   padding: 0 0 30px 0;
 }
+
 .myportfolio h3 {
-  font-family: "Orbitron", sans-serif;
+   font-family: "Poppins", sans-serif;
   color: grey;
   font-size: 30px;
   font-weight: 400;
@@ -447,99 +543,129 @@ span.longline3 {
   font-weight: 500;
   padding: 10px 0 20px;
 }
-label.tab-label-1 {
-  margin-left: 31%;
+.tabs-container {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
 }
-.myportfolio img.outer {
-  display: inline-block;
-  margin: 0 2px 4px 0;
-  width: 280px;
+
+.tabs {
+  margin-bottom: 20px;
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
 }
+
+.tab {
+  background-color: #e68523;
+  color: white;
+  border: none;
+  padding: 10px 15px; 
+  cursor: pointer;
+  margin: 5px; 
+  transition: background-color 0.3s, transform 0.3s; 
+}
+
+.tab:hover {
+  background-color: #f88a1c;
+  transform: scale(1.05); /* Scale up on hover for visual effect */
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .tab {
+    flex: 1 1 100%; /* Each tab takes full width on smaller screens */
+    margin: 5px 0; /* Adjust margin for vertical spacing */
+  }
+}
+
+
+/* images styling */
+
+
+
 /*-- /portfolio --*/
 /*-- contact-us --*/
-.contact-us {
-  padding: 0;
-  margin: 0;
-  background: url(../images/contact.jpg) 100% 100%;
-  background-position: center;
-  background-size: cover;
-  min-height: 700px;
-  background-repeat: no-repeat;
-<<<<<<< Updated upstream
-  background-attachment: fixed;
-=======
-  /* background-attachment: fixed; */
->>>>>>> Stashed changes
-}
-.contact-us h3 {
-  font-family: "Orbitron", sans-serif;
-  color: #fff;
-  font-size: 30px;
-  font-weight: 400;
-  padding: 65px 0 20px;
-  text-transform: uppercase;
-}
-.contact-us p.text-center {
-  color: #fff;
-  word-spacing: 5px;
-  font-size: 17px;
-  font-weight: 500;
-  padding: 10px 0 50px;
-}
-.contact-details h4 {
-  font-family: "Orbitron", sans-serif;
-  font-size: 25px;
-  line-height: 25px;
-  font-weight: 500;
-  color: #fff;
-}
-.contact-details p {
-  word-spacing: 5px;
-  padding: 15px 0;
-  font-size: 15px;
-  line-height: 25px;
-  font-weight: 500;
-  color: #fff;
-}
-.contact-info i {
-  color: #fff;
-  font-size: 30px;
-  margin: 25px 20px 10px 25px;
-  display: inline-block;
-}
-p.p3 {
-  padding: 0;
-  display: inline-block;
-  color: #fff;
-  vertical-align: middle;
-  margin: -50px 0 0;
-  font-size: 16px;
-  font-weight: 500;
-}
-p.p4 {
-  padding: 0;
-  display: block;
-  color: #fff;
-  vertical-align: middle;
-  font-weight: 500;
-  font-size: 16px;
-  margin: -27px 0 0 80px;
-}
-p.p3 a,
-p.p4 a {
-  text-decoration: none;
-  color: #fff;
-}
-i.glyphicon.glyphicon-envelope:hover,
-p.p3 a:hover,
-p.p4 a:hover {
-  color: #16518d;
-}
-.contact-us iframe.googlemaps {
-  height: 400px;
-  width: 100%;
-  margin-bottom: 2%;
-}
+  .contact-us {
+    padding: 0;
+    margin: 0;
+    background: url(../images/contact.jpg) 100% 100%;
+    background-position: center;
+    background-size: cover;
+    min-height: 700px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-attachment: fixed;
+  }
+  .contact-us h3 {
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 400;
+    padding: 65px 0 20px;
+    text-transform: uppercase;
+  }
+  .contact-us p.text-center {
+    color: #fff;
+    word-spacing: 5px;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 10px 0 50px;
+  }
+  .contact-details h4 {
+    font-family: "Poppins", sans-serif;
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .contact-details p {
+    word-spacing: 5px;
+    padding: 15px 0;
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .contact-info i {
+    color: #fff;
+    font-size: 30px;
+    margin: 25px 20px 10px 25px;
+    display: inline-block;
+  }
+  p.p3 {
+    padding: 0;
+    display: inline-block;
+    color: #fff;
+    vertical-align: middle;
+    margin: -50px 0 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  p.p4 {
+    padding: 0;
+    display: block;
+    color: #fff;
+    vertical-align: middle;
+    font-weight: 500;
+    font-size: 16px;
+    margin: -27px 0 0 80px;
+  }
+  p.p3 a,
+  p.p4 a {
+    text-decoration: none;
+    color: #fff;
+  }
+  i.glyphicon.glyphicon-envelope:hover,
+  p.p3 a:hover,
+  p.p4 a:hover {
+    color: #16518d;
+  }
+  .contact-us iframe.googlemaps {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 2%;
+  }
 /*-- /contact-us --*/
 /*-- updates --*/
 .our-updates {
@@ -547,7 +673,7 @@ p.p4 a:hover {
   padding: 0 0 50px 0;
 }
 .our-updates h3.text-center {
-  font-family: "Orbitron", sans-serif;
+   font-family: "Poppins", sans-serif;
   color: grey;
   font-size: 30px;
   font-weight: 400;
@@ -589,7 +715,7 @@ p.p4 a:hover {
   position: relative;
 }
 .view2 h4 {
-  font-family: "Orbitron", sans-serif;
+   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   color: #fff;
   text-align: center;
@@ -600,7 +726,7 @@ p.p4 a:hover {
   margin: 40px 0 0 0;
 }
 .view2 p {
-  font-family: Georgia, serif;
+ font-family: "Poppins", sans-serif;
   font-style: italic;
   font-size: 12px;
   position: relative;
@@ -631,7 +757,7 @@ p.p4 a:hover {
 .update-details h4 {
   color: #000;
   font-size: 20px;
-  font-family: "Orbitron", sans-serif;
+   font-family: "Poppins", sans-serif;
   font-weight: 400;
   line-height: 25px;
 }
@@ -681,7 +807,7 @@ footer .footer-gallery .image-gallery img:hover {
   -ms-transition: 0.5s all;
 }
 footer h3 {
-  font-family: "Orbitron", sans-serif;
+   font-family: "Poppins", sans-serif;
   padding: 40px 0;
   color: #fff;
   font-weight: 400;
@@ -1011,7 +1137,7 @@ button.trigger {
     left: 28%;
   }
   .banner-info p {
-    padding: 30px 533px;
+    padding: 0px  533px 30px 533px;
   }
   .our-updates p.text-center {
     word-spacing: 5px;
@@ -1038,7 +1164,7 @@ button.trigger {
     left: 24%;
   }
   .banner-info p {
-    padding: 30px 390px;
+    padding: 0px 390px 30px 390px;
   }
   label.tab-label-1 {
     margin-left: 33.5%;
@@ -1062,7 +1188,7 @@ button.trigger {
     left: 23%;
   }
   .banner-info p {
-    padding: 30px 400px;
+    padding: 0px 400px 30px 400px;
   }
   label.tab-label-1 {
     margin-left: 33%;
@@ -1086,7 +1212,7 @@ button.trigger {
     left: 20%;
   }
   .banner-info p {
-    padding: 30px 290px;
+    padding:0px 290px 30px 290px; 
   }
   label.tab-label-1 {
     margin-left: 31%;
@@ -1131,7 +1257,7 @@ button.trigger {
     left: 16%;
   }
   .banner-info p {
-    padding: 30px 270px;
+    padding: 0px 270px 30px 270px;
   }
   label.tab-label-1 {
     margin-left: 25%;
@@ -1202,7 +1328,7 @@ button.trigger {
     font-size: 20px;
   }
   .banner-info p {
-    padding: 30px 200px;
+    padding: 0px 200px 30px 200px;
     font-size: 14px;
   }
   .video iframe {
@@ -1216,7 +1342,7 @@ button.trigger {
     font-size: 13px;
   }
   .content {
-    padding: 434px 0;
+    /* padding: 434px 0; */
   }
   .contact-info i {
     margin: 25px 20px 10px 0;
@@ -1266,7 +1392,7 @@ button.trigger {
     width: 705px;
   }
   .banner-info p {
-    padding: 30px 170px;
+    padding: 0px 170px 30px 170px;
     font-size: 13px;
   }
 }
@@ -1466,14 +1592,11 @@ button.trigger {
   span.longline3 {
     left: 10%;
   }
-  .content {
-    padding: 576px 0;
-  }
   .pignose-layerslider .slide-visual .script-wrap {
     right: 170px;
   }
   .banner-info p {
-    padding: 30px 110px;
+    padding: 0px 110px 30px 110px;
   }
 }
 
@@ -1547,7 +1670,7 @@ button.trigger {
     top: 48%;
   }
   .banner-info p {
-    padding: 30px 145px;
+    padding: 0px 145px 30px 145px;
     line-height: 20px;
   }
   .header {
@@ -1559,26 +1682,8 @@ button.trigger {
 }
 
 @media (max-width: 768px) {
-  span.shortline1-1,
-  span.shortline1-2,
-  span.shortline1-3 {
-    left: 4%;
-    width: 215px;
-  }
-  span.shortline2-1,
-  span.shortline2-2,
-  span.shortline2-3 {
-    right: 4%;
-    width: 215px;
-  }
-  span.longline1,
-  span.longline2,
-  span.longline3 {
-    width: 693px;
-    left: 4%;
-  }
   .banner-info p {
-    padding: 30px 80px;
+    padding: 0px 80px 30px 80px;
   }
   .pignose-layerslider .slide-visual .script-wrap {
     right: 290px;
@@ -1663,7 +1768,7 @@ button.trigger {
     top: 45%;
   }
   .banner-info p {
-    padding: 15px 80px 25px;
+    padding: 0px 80px  15px  80px;
   }
   .top-bar button.navbar-toggle {
     background-color: rgba(193, 154, 154, 0.57);
@@ -1710,43 +1815,29 @@ button.trigger {
     height: 285px;
   }
 }
-
+  
 @media (max-width: 667px) {
-  .container .top-contacts {
+  /* .container .top-contacts {
     display: flex;
     width: 100%;
     margin-bottom: 1rem;
     align-items: center;
     justify-content: center;
   }
+
   .container .top-links {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
-  }
-  ul.top-contacts {
+  } */  
+  /* ul.top-contacts {
     float: none;
   }
   ul.top-links {
     float: none;
-  }
-  span.shortline1-1,
-  span.shortline1-2,
-  span.shortline1-3 {
-    left: 5%;
-  }
-  span.shortline2-1,
-  span.shortline2-2,
-  span.shortline2-3 {
-    right: 5%;
-  }
-  span.longline1,
-  span.longline2,
-  span.longline3 {
-    width: 586px;
-    left: 5%;
-  }
+  } */
+
   .video iframe {
     height: 358px;
   }
@@ -1773,6 +1864,10 @@ button.trigger {
 }
 
 @media (max-width: 640px) {
+
+  .top-contacts li {
+    display: none;
+  }
   .banner-info h3 {
     font-size: 18px;
   }
@@ -1781,7 +1876,7 @@ button.trigger {
     padding: 15px 0 30px;
   }
   .banner-info p {
-    padding: 15px 50px 25px;
+    padding: 0px 50px 50px 25px;
   }
   .video iframe {
     height: 343px;
@@ -1829,11 +1924,8 @@ button.trigger {
   .myportfolio img.outer {
     width: 260px;
   }
-  .social-store img.google {
-    margin-left: 15%;
-  }
   .content {
-    padding: 536px 0;
+    /* padding: 536px 0; */
   }
   .update-details {
     margin-left: -7%;
@@ -1846,9 +1938,6 @@ button.trigger {
 @media (max-width: 600px) {
   /* remove top contact */
 
-  .top-contacts li {
-    display: none;
-  }
   span.shortline1-1,
   span.shortline1-2,
   span.shortline1-3 {
@@ -1866,7 +1955,7 @@ button.trigger {
     left: 5%;
   }
   .banner-info p {
-    padding: 15px 50px 25px;
+    padding: 0px 50px  25px 50px;
     font-size: 12px;
   }
   .video iframe {
@@ -1885,7 +1974,7 @@ button.trigger {
     width: 245px;
   }
   .content {
-    padding: 506px 0;
+    /* padding: 506px 0; */
   }
 }
 
@@ -1907,7 +1996,7 @@ button.trigger {
     left: 2%;
   }
   .banner-info p {
-    padding: 15px 30px 25px;
+    padding: 0px 30px  25px 30px;
   }
   .video iframe {
     height: 303px;
@@ -1925,7 +2014,7 @@ button.trigger {
     width: 230px;
   }
   .content {
-    padding: 476px 0;
+    /* padding: 476px 0; */
   }
   .social-store img.google {
     margin-left: 10.5%;
@@ -1991,7 +2080,7 @@ button.trigger {
     left: 2%;
   }
   .banner-info p {
-    padding: 15px 10px 25px;
+    padding: 0px 10px  25px 10px;
     line-height: normal;
   }
   .contact-us h3,
@@ -2036,7 +2125,7 @@ button.trigger {
     width: 185px;
   }
   .content {
-    padding: 385px 0;
+    /* padding: 385px 0; */
   }
   .update-details {
     margin-left: 12%;
@@ -2078,7 +2167,6 @@ button.trigger {
     padding-bottom: 11px;
   }
   ul.top-links {
-    margin-left: -8px;
     margin-top: 1px;
   }
   .nav-links .navbar-inverse .navbar-brand {
@@ -2139,7 +2227,7 @@ button.trigger {
     right: 643px;
   }
   .content {
-    padding: 322px 0;
+    /* padding: 322px 0; */
   }
   .view2 img,
   .view2,
@@ -2227,7 +2315,7 @@ button.trigger {
     padding-top: 30px;
   }
   .content {
-    padding: 292px 0;
+    /* padding: 292px 0; */
   }
   .view2 img,
   .view2,
@@ -2282,7 +2370,7 @@ button.trigger {
     width: 280px;
   }
   .content {
-    padding: 1136px 0;
+    /* padding: 1136px 0; */
   }
   label.tab-label-1 {
     margin-left: 5px;
@@ -2307,7 +2395,7 @@ button.trigger {
     font-size: 13px;
   }
   .banner-info p {
-    padding: 6px 0px 20px;
+    padding: 6px 0px  20px;
     font-size: 12px;
     line-height: 16px;
   }

@@ -1,15 +1,16 @@
-<ul class="top-contacts" {{ attributes.addClass('quickedit-field') }}>
+<ul class="top-contacts">
   {% if field_name == 'field_email' %}
-  <li class="top-hover" >
+  <li class="top-hover">
     <p>
       <span class="fas fa-envelope"></span>
       <a href="mailto:{{ items.0.content }}">{{ items.0.content }}</a>
     </p>
   </li>
+
   {% endif %}
 
   {% if field_name == 'field_phone_number' %}
-  <li class="top-hover"  >
+  <li class="top-hover">
     <p>
       <span class="fas fa-phone-alt"></span>
       <a href="tel:{{ items.0.content }}">{{ items.0.content }}</a>
@@ -17,8 +18,49 @@
   </li>
   {% endif %}
 </ul>
+<ul class="top-links">
+  <li>
+    {% if field_name == 'field_languages' %}
+    <div id="language-dropdown" class="language-dropdown">
+      <!-- Default selected flag -->
+      <div id="selected-language" class="selected-language">
+        {% if items[0].content['#title'] == 'Français' %}
+        <img src="{{ directory }}/images/fr.svg" alt="Français" class="lang-img">
+        <span>FR</span>
+        {% elseif items[0].content['#title'] == 'English' %}
+        <img src="{{ directory }}/images/gb.svg" alt="English" class="lang-img">
+        <span>EN</span>
+        {% elseif items[0].content['#title'] == 'العربية' %}
+        <img src="{{ directory }}/images/arabic.webp" alt="Arabic" class="lang-img">
+        <span>AR</span>
+        {% else %}
+        <!-- Default to French if no language set -->
+        <img src="{{ directory }}/images/fr.svg" alt="Français" class="lang-img">
+        <span>FR</span>
+        {% endif %}
+      </div>
 
-<ul class="top-links" {{ attributes.addClass('quickedit-field') }}>
+      <!-- Dropdown options -->
+      <div id="language-options" class="language-options" style="display: none;">
+        {% for item in items %}
+        <div class="language-option" data-url="{{ item.content['#url'] }}" data-lang="{{ item.content['#title'] }}">
+          {% if item.content['#title'] == 'Français' %}
+          <img src="{{ directory }}/images/fr.svg" alt="Français" class="lang-img">
+          <span>FR</span>
+          {% elseif item.content['#title'] == 'English' %}
+          <img src="{{ directory }}/images/gb.svg" alt="English" class="lang-img">
+          <span>EN</span>
+          {% elseif item.content['#title'] == 'العربية' %}
+          <img src="{{ directory }}/images/arabic.webp" alt="Arabic" class="lang-img">
+          <span>AR</span>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </li>
+
   {% if field_name == 'field_icons' %}
   {% for item in items %}
   <li>
@@ -35,3 +77,62 @@
   {% endfor %}
   {% endif %}
 </ul>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const selectedLanguage = document.getElementById("selected-language");
+    const languageOptions = document.getElementById("language-options");
+
+    // Set default language based on content
+    const defaultLanguage = items[0].content['#title']; // Assuming this holds the current content's language
+    if (defaultLanguage === 'Français') {
+      selectedLanguage.innerHTML = `
+          <img src="${directory}/images/fr.svg" alt="Français" class="lang-img">
+          <span>FR</span>
+      `;
+    } else if (defaultLanguage === 'English') {
+      selectedLanguage.innerHTML = `
+          <img src="${directory}/images/gb.svg" alt="English" class="lang-img">
+          <span>EN</span>
+      `;
+    } else if (defaultLanguage === 'العربية') {
+      selectedLanguage.innerHTML = `
+          <img src="${directory}/images/arabic.webp" alt="Arabic" class="lang-img">
+          <span>AR</span>
+      `;
+    } else {
+      // Fallback to French if no specific language is found
+      selectedLanguage.innerHTML = `
+          <img src="${directory}/images/fr.svg" alt="Français" class="lang-img">
+          <span>FR</span>
+      `;
+    }
+
+    // Toggle dropdown visibility on click
+    selectedLanguage.addEventListener("click", function(event) {
+      event.stopPropagation();
+      languageOptions.style.display = languageOptions.style.display === "block" ? "none" : "block";
+    });
+
+    // Handle language selection
+    languageOptions.addEventListener("click", function(event) {
+      const option = event.target.closest(".language-option");
+      if (option) {
+        const selectedUrl = option.getAttribute("data-url");
+
+        // Update selected language display
+        selectedLanguage.innerHTML = option.innerHTML;
+
+        // Redirect to the selected language URL
+        window.location.href = selectedUrl;
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function(event) {
+      if (!selectedLanguage.contains(event.target) && !languageOptions.contains(event.target)) {
+        languageOptions.style.display = "none";
+      }
+    });
+  });
+</script>

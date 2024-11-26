@@ -1,26 +1,17 @@
 {# Render subtitle field if it exists #}
 {% if field_name == 'field_title' %}
-<span class="shortline1-1"></span>
-<span class="shortline1-2"></span>
-<span class="shortline1-3"></span>
 <h3 {{ attributes.addClass('quickedit-field') }}>{{ items.0.content }}</h3>
-<span class="shortline2-1"></span>
-<span class="shortline2-2"></span>
-<span class="shortline2-3"></span>
 {% endif %}
 
 {# Render title field if it exists #}
 {% if field_name == 'field_sub_title' %}
-<h2 {{ attributes.addClass('quickedit-field') }}>{{ items.0.content }}</h2>
+<h2 style='color: #f9b448;' {{ attributes.addClass('quickedit-field') }}>{{ items.0.content }}</h2>
 {% endif %}
 
-<span class="longline1"></span>
-<span class="longline2"></span>
-<span class="longline3"></span>
 
 {# Render summary field if it exists #}
 {% if field_name == 'field_summary' %}
-<p {{ attributes.addClass('quickedit-field') }}>{{ items.0.content }}</p>
+<p {{ attributes.addClass('quickedit-field') }} style='width:auto; '>{{ items.0.content }}</p>
 {% endif %}
 
 {# Render action button if it exists #}

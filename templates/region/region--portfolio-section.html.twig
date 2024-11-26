@@ -1,12 +1,7 @@
 <!-- news -->
-<div class="myportfolio" id="portfolio">  
+<div class="myportfolio" id="portfolio"   {{ attributes.addClass('quickedit-field') }}>  
       {{content}}
     </div>
-
-
-
-
-    
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const tabSelectors = document.querySelectorAll('input[name="radio-set"]');

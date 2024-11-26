@@ -1,0 +1,34 @@
+<div class="logo-slider-container">
+  <div class="logo-slider-row">
+  {% for item in items %}
+    <div class="logo-slide">
+      {{ item.content}}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const sliderRow = document.querySelector('.logo-slider-row');
+  const slideWidth = sliderRow.querySelector('.logo-slide').offsetWidth;
+
+  // Clone the slides to create an infinite loop effect
+  const clone = sliderRow.cloneNode(true);
+  sliderRow.appendChild(clone);
+
+  let currentPosition = 0;
+
+  function slideLogos() {
+    currentPosition -= 0.5; // Adjust this value to control the speed (0.5 is slower than 1)
+    if (Math.abs(currentPosition) >= sliderRow.scrollWidth / 2) {
+      currentPosition = 0; // Reset position when the end is reached
+    }
+    sliderRow.style.transform = `translateX(${currentPosition}px)`; // Move horizontally
+    requestAnimationFrame(slideLogos);
+  }
+
+  // Start the sliding animation
+  requestAnimationFrame(slideLogos);
+});
+</script>

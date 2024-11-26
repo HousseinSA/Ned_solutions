@@ -5,7 +5,6 @@ files:
       # External CSS
       https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css: { type: external }
       https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css: { type: external }
-      
       # Local CSS
       css/style.css: {}
       css/image-hover.css: {}
@@ -18,8 +17,9 @@ files:
     js/modernizr.custom.js: {}
     js/SmoothScroll.min.js: {}
     # js/bgfader.js: {}
-    # js/pignose.layerslider.js: {}
+    js/pignose.layerslider.js: {}
     js/cobox.js: {}
+    js/jquery.min.js: {}
   dependencies:
     - core/jquery
     - core/drupal

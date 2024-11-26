@@ -1,0 +1,14 @@
+  {# <div class="content" {{ attributes.addClass('quickedit-field') }}>
+    <div class="content-1" {{ attributes.addClass('quickedit-field') }} >
+      {% if field_name == 'field_project_fields' %}
+      {% for item in items %}
+        {% set paragraph = item.content['#paragraph'] %}
+      <a  title=" {{ item.content["#paragraph"].fields.field_project_name.value }}">
+        <img src="{{ file_url(paragraph.field_project_image.entity.field_media_image.entity.uri.value) }}" alt="example-1"  class="outer img-responsive slideanim" />
+      </a>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+ #}

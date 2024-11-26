@@ -13,13 +13,16 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   background-color: #000;
 }
+
 .cobox-main {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10000;
-  width: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    left: 0;
+    z-index: 10000;
+    width: 100%;
 }
+
 .cobox-outer {
   position: relative;
   width: 220px;
@@ -28,6 +31,7 @@
   padding: 4px;
   background-color: #fff;
 }
+
 .cobox-nav {
   display: none;
   position: absolute;
@@ -76,6 +80,7 @@
   height: 100%;
   overflow: hidden;
 }
+
 .cobox-image {
   display: none;
   width: 100%;
