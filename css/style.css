@@ -128,7 +128,7 @@ ul.top-links {
 }
 
 .language-options {
-  display: none; /* Ensures the dropdown is hidden by default */
+  display: none; /* Ensure dropdown is hidden by default */
   position: absolute;
   top: 100%;
   right: 25px;
@@ -137,19 +137,21 @@ ul.top-links {
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 100;
+  
+  /* Animation properties */
+  opacity: 0; /* Start with opacity zero */
 }
 
 .language-option {
-  padding: 5px 25px 5px 5px;
+  padding: 5px 25px;
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
 .language-option:hover {  
-  background-color: #f9b448;
+   background-color: #f9b448; /* Highlight on hover */
 }
-
 ul.top-contacts li p span,
 ul.top-contacts p a,
 ul.top-links li a,
@@ -778,7 +780,7 @@ span.longline3 {
 }
 /*-- /updates --*/
 /*-- footer --*/
-footer {
+/* footer {
   padding: 0;
   margin: 0;
   background: url(../images/twinkle.png) repeat;
@@ -812,7 +814,95 @@ footer h3 {
   color: #fff;
   font-weight: 400;
   font-size: 22px;
+} */
+.footer {
+  background-color: #f8f9fa; /* Light background color */
+  padding: 40px 20px; /* Padding for spacing */
+  font-family: Arial, sans-serif; /* Font family */
 }
+
+.footer-container {
+  display: flex;
+  justify-content: space-between; /* Space between sections */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.footer-section {
+  flex: 1; /* Equal width for each section */
+  margin: 10px; /* Margin between sections */
+}
+
+.footer-section h4 {
+  color: #e68523; /* Heading color */
+  margin-bottom: 15px; /* Space below headings */
+}
+
+.footer-section ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+}
+
+.footer-section ul li {
+  margin-bottom: 10px; /* Space between list items */
+}
+
+.footer-section ul li a {
+  text-decoration: none; /* No underline on links */
+  color: #e68523; /* Link color */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.footer-section ul li a:hover {
+  color: #c76a1f; /* Darker shade on hover */
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  color: #e68523; /* Link color for social icons */
+  font-size: 20px; /* Size of social icons */
+}
+
+.social-icons a:hover {
+  color: #c76a1f; /* Darker shade on hover for icons */
+}
+
+.footer-bottom {
+  text-align: center; /* Centered text for bottom section */
+  margin-top: 20px; /* Space above bottom text */
+  font-size: 14px; /* Font size for bottom text */
+  color: #6c757d; /* Gray color for bottom text */
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+  .footer-container {
+      flex-direction: column; /* Stack sections vertically on small screens */
+      align-items: center; /* Center items in the column layout */
+      padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .footer-section {
+      width: 100%; /* Full width for each section on small screens */
+      margin-bottom: 20px; /* Space between stacked sections */
+      text-align: center; /* Center text in sections for better readability */
+  }
+
+  .social-icons {
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 15px;
+      width: 100%; /* Full width for social icons section */
+      padding-top: 10px;
+      border-top: 1px solid #e2e2e2; /* Optional border for separation */
+  }
+}
+
 .popover-title {
   color: #000;
 }
