@@ -99,74 +99,28 @@
                 })
             </script>
 
-            <!-- <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    const selectedLanguage = document.getElementById("selected-language");
-                    const languageOptions = document.getElementById("language-options");
+            
+{# <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> #}
 
-                    // Set saved language from localStorage
-                    const savedLanguage = localStorage.getItem("selectedLanguage");
-                    if (savedLanguage) {
-                        const selectedOption = Array.from(languageOptions.children).find(
-                            option => option.getAttribute("data-url") === savedLanguage
-                        );
-                        if (selectedOption) {
-                            selectedLanguage.innerHTML = selectedOption.innerHTML;
-                        }
-                    } else {
-                        // Default to French if no language is set
-                        selectedLanguage.innerHTML = `
-            <img src="${directory}/images/fr.svg" alt="Français" class="lang-img">
-            <span>FR</span>
-        `;
-                    }
 
-                    // Toggle dropdown visibility on click
-                    selectedLanguage.addEventListener("click", function(event) {
-                        event.stopPropagation();
-                        languageOptions.style.display = languageOptions.style.display === "block" ? "none" : "block";
-                    });
-
-                    // Handle language selection
-                    languageOptions.addEventListener("click", function(event) {
-                        const option = event.target.closest(".language-option");
-                        if (option) {
-                            const selectedUrl = option.getAttribute("data-url");
-
-                            // Update selected language display
-                            selectedLanguage.innerHTML = option.innerHTML;
-
-                            // Save selected language in localStorage
-                            localStorage.setItem("selectedLanguage", selectedUrl);
-
-                            // Redirect to the selected language URL
-                            window.location.href = selectedUrl;
-                        }
-                    });
-
-                    // Close dropdown when clicking outside
-                    document.addEventListener("click", function(event) {
-                        if (!selectedLanguage.contains(event.target) && !languageOptions.contains(event.target)) {
-                            languageOptions.style.display = "none";
-                        }
-                    });
-                });
-            </script> -->
-
-            <script>
-// Ensure the script runs after the DOM is fully loaded
+<script>
 document.addEventListener("DOMContentLoaded", function() {
     const selectedLanguage = document.getElementById("selected-language");
     const languageOptions = document.getElementById("language-options");
 
+    // Check local storage for the selected language
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        // Update the display based on the saved language
+        updateLanguageDisplay(savedLanguage);
+    }
+
     // Toggle dropdown visibility on click
     selectedLanguage.addEventListener("click", function(event) {
         event.stopPropagation(); 
-        if (languageOptions.style.display === "none") {
-            languageOptions.style.display = "block"; // Show the options
-        } else {
-            languageOptions.style.display = "none"; // Hide the options
-        }
+        languageOptions.classList.toggle("show");
     });
 
     // Handle language selection
@@ -174,19 +128,92 @@ document.addEventListener("DOMContentLoaded", function() {
         const option = event.target.closest(".language-option");
         if (option) {
             const selectedUrl = option.getAttribute("data-url");
-
-            // Update selected language display
-            selectedLanguage.innerHTML = option.innerHTML;
-
+            const langId = option.getAttribute("data-lang");
+            // Update the display
+            updateLanguageDisplay(langId);
+            // Store the selected language in local storage
+            localStorage.setItem('selectedLanguage', langId);
             // Redirect to the selected language URL
             window.location.href = selectedUrl;
         }
     });
 
+    // Function to update the selected language display
+    function updateLanguageDisplay(langId) {
+        let langImg = '';
+        let langText = '';
+        let langCode = '';
+
+        if (langId === 'Français') {
+            langImg = '<img src="{{ directory }}/images/fr.svg" alt="Français" class="lang-img">';
+            langText = 'FR';
+            langCode = ''; // No language code for French
+        } else if (langId === 'English') {
+            langImg = '<img src="{{ directory }}/images/gb.svg" alt="English" class="lang-img">';
+            langText = 'EN';
+            langCode = 'en'; // Language code for English
+        } else if (langId === 'العربية') {
+            langImg = '<img src="{{ directory }}/images/arabic.webp" alt="Arabic" class="lang-img">';
+            langText = 'AR';
+            langCode = 'ar'; // Language code for Arabic
+        }
+
+        // Update the selected language display
+        selectedLanguage.innerHTML = langImg + langText;
+
+        // Update the URL based on the language code
+        const currentUrl = window.location.href;
+        const newUrl = updateUrlLanguage(currentUrl, langCode);
+        console.log("Redirecting to:", newUrl); // For debugging
+    }
+
+    // Function to update the language in the URL
+    function updateUrlLanguage(url, langCode) {
+        // Check if the URL already contains a language code
+        const urlParts = url.split('/');
+        const langIndex = urlParts.findIndex(part => ['en', 'ar'].includes(part));
+
+        if (langCode) {
+            if (langIndex !== -1) {
+                // Replace the existing language code with the new one
+                urlParts[langIndex] = langCode;
+            } else {
+                // Add the new language code to the URL (e.g., /en or /ar)
+                urlParts.splice(3, 0, langCode); // Adjust according to your URL structure
+            }
+        } else {
+            // If the language is French and has no code, remove any existing language code
+            if (langIndex !== -1) {
+                urlParts.splice(langIndex, 1); // Remove the language code
+            }
+        }
+
+        return urlParts.join('/');
+    }
+
     // Close dropdown when clicking outside
     document.addEventListener("click", function(event) {
         if (!selectedLanguage.contains(event.target) && !languageOptions.contains(event.target)) {
-            languageOptions.style.display = "none"; // Hide the dropdown
+            languageOptions.classList.remove("show");
+        }
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    $('.toggle-title').click(function() {
+        var content = $(this).next('.toggle-content');
+
+        // Toggle the content
+        if (content.hasClass('show')) {
+            content.removeClass('show').slideUp(300); // Slide up and hide
+            $(this).removeClass('active'); // Remove active class for arrow
+        } else {
+            $('.toggle-content.show').removeClass('show').slideUp(300); // Hide any open content
+            content.addClass('show').slideDown(300); // Slide down and show
+            $('.toggle-title').removeClass('active'); // Remove active class from all
+            $(this).addClass('active'); // Add active class for clicked title
         }
     });
 });

@@ -22,42 +22,40 @@
   <li>
     {% if field_name == 'field_languages' %}
     <div id="language-dropdown" class="language-dropdown">
-      <!-- Default selected flag -->
       <div id="selected-language" class="selected-language" style="cursor: pointer;">
-        {% if items[0].content['#title'] == 'Français' %}
+        {% set current_language = items[0].content['#title'] %}
+        {% if current_language == 'Français' %}
         <img src="{{ directory }}/images/fr.svg" alt="Français" class="lang-img">
         <span>FR</span>
-        {% elseif items[0].content['#title'] == 'English' %}
+        {% elseif current_language == 'English' %}
         <img src="{{ directory }}/images/gb.svg" alt="English" class="lang-img">
         <span>EN</span>
-        {% elseif items[0].content['#title'] == 'العربية' %}
+        {% elseif current_language == 'العربية' %}
         <img src="{{ directory }}/images/arabic.webp" alt="Arabic" class="lang-img">
         <span>AR</span>
         {% else %}
-        <!-- Default to French if no language set -->
         <img src="{{ directory }}/images/fr.svg" alt="Français" class="lang-img">
         <span>FR</span>
         {% endif %}
       </div>
 
       <!-- Dropdown options -->
-      <div id="language-options" class="language-options" style="display:none;">
-    {% for item in items %}
-    <div class="language-option" data-url="{{ item.content['#url'] }}" data-lang="{{ item.content['#title'] }}">
-        {% if item.content['#title'] == 'Français' %}
-        <img src="{{ directory }}/images/fr.svg" alt="Français" class="lang-img">
-        <span>FR</span>
-        {% elseif item.content['#title'] == 'English' %}
-        <img src="{{ directory }}/images/gb.svg" alt="English" class="lang-img">
-        <span>EN</span>
-        {% elseif item.content['#title'] == 'العربية' %}
-        <img src="{{ directory }}/images/arabic.webp" alt="Arabic" class="lang-img">
-        <span>AR</span>
-        {% endif %}
-    </div>
-    {% endfor %}
-</div>
-
+      <div id="language-options" class="language-options">
+        {% for item in items %}
+        <div class="language-option" data-url="{{ item.content['#url'] }}" data-lang="{{ item.content['#title'] }}">
+          {% if item.content['#title'] == 'Français' %}
+          <img src="{{ directory }}/images/fr.svg" alt="Français" class="lang-img">
+          <span>FR</span>
+          {% elseif item.content['#title'] == 'English' %}
+          <img src="{{ directory }}/images/gb.svg" alt="English" class="lang-img">
+          <span>EN</span>
+          {% elseif item.content['#title'] == 'العربية' %}
+          <img src="{{ directory }}/images/arabic.webp" alt="Arabic" class="lang-img">
+          <span>AR</span>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
     </div>
     {% endif %}
   </li>
@@ -78,5 +76,3 @@
   {% endfor %}
   {% endif %}
 </ul>
-
-

@@ -122,24 +122,28 @@ ul.top-links {
 .lang-img {
   width: 25px; 
   height: 25px;
-  border-radius: 50%; /* Use 50% for perfect circles */
+  border-radius: 50%; 
   margin-right: 5px;
-  object-fit: cover; /* Ensures the image covers the area without distortion */
+  object-fit: cover; 
 }
 
 .language-options {
   display: none; /* Ensure dropdown is hidden by default */
   position: absolute;
   top: 100%;
-  right: 25px;
+  right: 0; /* Adjust as necessary */
   background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 100;
-  
-  /* Animation properties */
   opacity: 0; /* Start with opacity zero */
+  transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.language-options.show {
+  display: block; /* Show when the class is added */
+  opacity: 1; /* Fade in */
 }
 
 .language-option {
@@ -415,50 +419,113 @@ span.longline3 {
 }
 /*-- /banner-info --*/
 /*-- About-Us --*/
-.about-us {
-  margin: 0;
-  padding: 0;
+.inherit-container-width {
+  padding: 3em;
+  background-color: #f9fafb;
 }
-.about-us h3 {
-   font-family: "Poppins", sans-serif;
-  color: grey;
-  font-size: 30px;
-  font-weight: 400;
-  padding: 75px 0 20px;
-  text-transform: uppercase;
+.inherit-container-width  h2 {
+  color: #808080;
 }
-.about-us p.text-center {
-  word-spacing: 5px;
-  color: grey;
-  font-size: 17px;
-  font-weight: 500;
-  padding: 10px 0 40px;
+
+.scc-grid {
+  display: flex; /* Use flexbox to align items horizontally */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  margin-bottom: 2em; /* Spacing adjustments */
+  padding: 2rem;
+  align-items: flex-start; /* Align items to the start */
 }
-.video iframe {
-  width: 560px;
-  height: 324px;
+
+.two-col-left,
+.two-col-right {
+  flex: 1; /* Allow both columns to grow equally */
+  min-width: 300px; /* Minimum width for columns */
+  margin-left: 1rem;
 }
-.about-us p.p1 {
-  color: grey;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 22px;
-  word-spacing: 5px;
+
+.two-col-left {
+  display: flex; /* Ensure the image is centered */
+  justify-content: center; /* Center image horizontally */
 }
-.about-us p.p2 {
-  color: grey;
-  padding: 20px 0 30px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 22px;
-  word-spacing: 5px;
+
+.service-item {
+  margin-bottom: 1.5em; /* Space between items */
+  cursor: pointer; /* Pointer cursor for clickable items */
+  border: 1px solid #e2e8f0; /* Border for items */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Transition for hover effect */
+  padding: 1em; /* Padding for content */
 }
-.social-store img {
-  display: inline-block;
+
+.service-item:hover {
+  background-color: #e0f7fa; /* Light background on hover */
 }
-.social-store img.google {
-  margin-right: 10px;
+
+.uagb-ifb-title {
+  font-size: 1.5em;
+  color: #2137fc; /* Title color */
+  display: flex; /* Flexbox for alignment */
+  justify-content: space-between; /* Space between title and arrow */
+  align-items: center; /* Center items vertically */
+  padding: 10px; /* Padding for the title area */
 }
+
+.arrow {
+  background-color: black; /* Arrow background color */
+  color: white; /* Arrow icon color */
+  border-radius: 50%; /* Round background */
+  padding: 0.5em; /* Padding for the arrow */
+  display: inline-flex; /* Keep the arrow inline */
+  justify-content: center; /* Center the icon */
+  align-items: center; /* Center icon vertically */
+  width: 30px; /* Width of the arrow circle */
+  height: 30px; /* Height of the arrow circle */
+  margin-left: 10px; /* Space between title and arrow */
+}
+
+.toggle-content {
+  margin-top: 0.5em;
+  color: #1e293b; /* Description color */
+  display: none; /* Start hidden */
+}
+
+.toggle-title.active .arrow {
+  background-color: #2137fc; /* Change background on active */
+}
+
+.toggle-content.show {
+  display: block; /* Show content */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .scc-grid {
+      flex-direction: column; /* Stack vertically on smaller screens */
+      align-items: center; /* Center items horizontally */
+  }
+
+  .two-col-left, .two-col-right {
+      width: 100%; /* Full width on smaller screens */
+      text-align: center; /* Center text */
+      margin-left: 0rem;
+      margin-bottom: 2rem;
+  }
+
+  .service-item {
+      width: 100%; /* Full width for service items */
+      margin-bottom: 1em; /* Reduce margin between items */
+  }
+
+  .arrow {
+      margin-left: 0; /* Remove left margin for arrows */
+  }
+
+  .uagb-ifb-title {
+      margin-top: 1em; /* Space between image and title */
+  }
+}
+
+
+
 /*-- /About-Us --*/
 /*-- News --*/
 
@@ -522,7 +589,6 @@ span.longline3 {
     width: 60px; /* Further reduce logo size on smaller screens */
   }
 }
-
 /*-- /News --*/
 /*-- portfolio --*/
 .myportfolio {
